@@ -36,7 +36,6 @@
             flex-direction: column;
         }
 
-        /* Ajuste Responsive General */
         @media (max-width: 768px) {
             header, .section-info, .section-two-cols, .section-grid, .section-shop, .section-contact {
                 height: auto;
@@ -53,7 +52,7 @@
             background-image: url('IMG/f1.jpeg');
             background-size: cover; 
             background-repeat: no-repeat;
-            background-position: center;
+            background-position: center 15%; /* Prioriza la parte superior para ver el rostro */
             justify-content: flex-start; 
             align-items: center;    
         }
@@ -62,42 +61,90 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            padding-top: 20px;
+            padding-top: 15px;
             z-index: 10;
         }
 
         .logo-top {
-            width: clamp(100px, 15vw, 160px);
+            width: clamp(60px, 8vw, 100px);
             height: auto;
+            opacity: 0.95;
         }
 
         nav {
             width: 100%;
             display: flex;
             justify-content: center;
-            padding: 10px 0 25px 0; 
+            padding: 5px 0 15px 0; 
             z-index: 10;
         }
 
         nav a {
             color: #7AE2CF;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 0 12px;
             font-weight: 700;
             text-transform: uppercase;
-            font-size: clamp(12px, 1.5vw, 18px); 
+            font-size: clamp(11px, 1.3vw, 16px); 
             text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             transition: 0.3s;
         }
 
         nav a:hover { color: #F5EEDD; }
 
+        /* Contenedor del Logo Ritmo Ajustado */
+        .container-featured {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alineado arriba para controlar el margen */
+            width: 100%;
+            padding-top: 50px; /* Bajado 50px según lo solicitado */
+        }
+
+        .img-featured {
+            /* Reducción de tamaño: antes ~45%, ahora más controlado */
+            max-width: 250px; 
+            width: 30%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+        }
+
+        .header-text-box {
+            text-align: center; 
+            padding: 12px 25px; 
+            color: #06202B; 
+            font-size: clamp(0.9rem, 2.2vw, 1.4rem);
+            background-color: rgba(245, 238, 221, 0.92); 
+            border-radius: 50px; 
+            margin: 0 20px 15px 20px;
+            font-weight: bold;
+            max-width: 750px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-cta {
+            background-color: #077A7D;
+            color: #F5EEDD;
+            padding: 10px 40px;
+            border-radius: 50px; 
+            border: 2px solid #7AE2CF;
+            font-size: 20px;
+            font-family: 'Smythe', cursive;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+        .btn-cta:hover { background-color: #7AE2CF; color: #06202B; }
+
         /* Menú Móvil */
         .menu-toggle {
             display: none;
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             z-index: 100;
             background: #077A7D;
             border: 2px solid #7AE2CF;
@@ -107,9 +154,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
         }
-        .menu-toggle span { display: block; width: 25px; height: 3px; background-color: #F5EEDD; }
+        .menu-toggle span { display: block; width: 22px; height: 2px; background-color: #F5EEDD; }
 
         .mobile-nav {
             position: fixed;
@@ -120,155 +167,109 @@
             transition: 0.4s;
         }
         .mobile-nav.active { right: 0; }
-        .mobile-nav a { color: #7AE2CF; font-size: 24px; margin: 15px 0; text-decoration: none; text-transform: uppercase; }
+        .mobile-nav a { color: #7AE2CF; font-size: 22px; margin: 12px 0; text-decoration: none; text-transform: uppercase; }
 
         @media (max-width: 1024px) {
             nav { display: none; }
             .menu-toggle { display: flex; }
         }
 
-        .container-featured {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
+        /* Secciones de Contenido */
+        .section-title { font-size: clamp(28px, 4.5vw, 42px); color: #077A7D; text-transform: uppercase; margin-bottom: 12px; padding-top: 15px; text-align: center; }
+
+        /* ¿Quién Soy? - Enfoque en Rostro */
+        .section-info { padding: 30px 20px; align-items: center; text-align: center; }
+        .bio-text { max-width: 800px; font-size: clamp(17px, 1.9vw, 20px); margin-bottom: 15px; }
+        .section-image-container { width: 100%; flex: 1; display: flex; justify-content: center; overflow: hidden; }
+        .section-image { 
+            height: 100%; 
+            width: 90%; 
+            max-width: 900px; 
+            object-fit: cover; 
+            object-position: center 10%; /* Ajustado para ver la cara arriba */
+            border-radius: 15px; 
         }
-
-        .img-featured {
-            max-width: 50%;
-            max-height: 35vh;
-            object-fit: contain;
-        }
-
-        .header-text-box {
-            text-align: center; 
-            padding: 15px 30px; 
-            color: #06202B; 
-            font-size: clamp(1rem, 2.5vw, 1.6rem);
-            background-color: rgba(245, 238, 221, 0.9); 
-            border-radius: 50px; 
-            margin: 0 20px 20px 20px;
-            font-weight: bold;
-            max-width: 850px;
-        }
-
-        .btn-cta {
-            background-color: #077A7D;
-            color: #F5EEDD;
-            padding: 12px 50px;
-            border-radius: 50px; 
-            border: 2px solid #7AE2CF;
-            font-size: 22px;
-            font-family: 'Smythe', cursive;
-            text-transform: uppercase;
-            cursor: pointer;
-            margin-bottom: 40px;
-            transition: 0.3s;
-        }
-        .btn-cta:hover { background-color: #7AE2CF; color: #06202B; }
-
-        /* Secciones Generales */
-        .section-title { font-size: clamp(32px, 5vw, 48px); color: #077A7D; text-transform: uppercase; margin-bottom: 15px; padding-top: 20px; text-align: center; }
-
-        /* ¿Quién Soy? */
-        .section-info { padding: 40px 20px; align-items: center; text-align: center; justify-content: flex-start; }
-        .bio-text { max-width: 850px; font-size: clamp(18px, 2vw, 21px); margin-bottom: 20px; overflow-y: auto; }
-        .section-image-container { width: 100%; flex: 1; display: flex; justify-content: center; overflow: hidden; padding-bottom: 10px; }
-        .section-image { height: 100%; width: auto; max-width: 100%; object-fit: cover; border-radius: 15px; }
 
         /* ¿Qué es Ritmo? */
         .section-two-cols { display: flex; flex-direction: row; background: #06202B; color: #F5EEDD; }
         .col-image { flex: 1; height: 100%; overflow: hidden; }
-        .col-image img { width: 100%; height: 100%; object-fit: cover; }
-        .col-text { flex: 1; padding: 5% 7%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
-        .col-text h2 { font-size: clamp(35px, 5vw, 50px); color: #7AE2CF; margin-bottom: 15px; }
-        .col-text p { font-size: clamp(18px, 1.8vw, 22px); margin-bottom: 20px; }
+        .col-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 10%; }
+        
+        .col-text { flex: 1; padding: 4% 6%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; text-align: left; }
+        .col-text h2 { font-size: clamp(30px, 4.5vw, 45px); color: #7AE2CF; margin-bottom: 12px; }
+        .col-text p { font-size: clamp(17px, 1.7vw, 20px); margin-bottom: 18px; }
 
         @media (max-width: 768px) {
             .section-two-cols { flex-direction: column; }
-            .col-image { height: 35vh; width: 100%; }
-            .col-text { padding: 30px 20px; align-items: center; text-align: center; }
+            .col-image { height: 40vh; width: 100%; }
+            .col-text { padding: 25px 20px; align-items: center; text-align: center; }
         }
 
         .btn-whatsapp {
             background-color: #25D366;
             color: white;
-            padding: 12px 35px;
+            padding: 10px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
             text-transform: uppercase;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        /* Entrenamientos - AJUSTE DE IMÁGENES */
-        .section-grid { padding: 40px 20px; background-color: #F5EEDD; color: #06202B; align-items: center; }
-        .list-includes { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 30px; max-width: 1000px; }
-        .list-includes li { font-size: 19px; background: rgba(7, 122, 125, 0.1); padding: 8px 18px; border-radius: 25px; border: 1px solid #077A7D; }
+        /* Entrenamientos Grid */
+        .section-grid { padding: 30px 20px; background-color: #F5EEDD; align-items: center; }
+        .list-includes { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 20px; }
+        .list-includes li { font-size: 16px; background: rgba(7, 122, 125, 0.1); padding: 5px 12px; border-radius: 20px; border: 1px solid #077A7D; }
         
         .grid-container { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
-            gap: 20px; 
+            gap: 15px; 
             width: 100%; 
-            max-width: 1200px; 
-            margin-top: auto;
-            margin-bottom: 20px;
+            max-width: 1100px; 
         }
         
         .grid-item {
             width: 100%;
-            aspect-ratio: 4 / 5; /* Mantiene una proporción vertical elegante */
+            aspect-ratio: 4 / 5; 
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border-radius: 10px;
         }
         
         .grid-item img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            transition: transform 0.5s ease;
-        }
-        
-        .grid-item:hover img {
-            transform: scale(1.05);
+            object-position: center 15%; /* Foco en cara en el grid */
         }
 
         @media (max-width: 1024px) {
-            .grid-container { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        }
-
-        @media (max-width: 480px) {
-            .grid-container { grid-template-columns: 1fr; gap: 20px; padding: 0 10px; }
-            .grid-item { aspect-ratio: 16 / 9; } /* Cambia a horizontal en móviles pequeños para que no ocupe toda la pantalla */
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
         }
 
         /* Tienda */
-        .section-shop { background-color: #06202B; padding: 40px 20px; align-items: center; }
-        .shop-title { color: #7AE2CF; font-size: 45px; margin-bottom: 30px; }
-        .slider-container { display: flex; gap: 20px; overflow-x: auto; width: 100%; max-width: 1100px; padding: 10px; scroll-snap-type: x mandatory; justify-content: center; }
-        @media (max-width: 900px) { .slider-container { justify-content: flex-start; } }
+        .section-shop { background-color: #06202B; padding: 30px 20px; align-items: center; }
+        .shop-title { color: #7AE2CF; font-size: 40px; margin-bottom: 25px; }
+        .slider-container { display: flex; gap: 20px; width: 100%; max-width: 1000px; flex-wrap: wrap; justify-content: center; }
         
         .product-card { 
-            min-width: 260px; background: #F5EEDD; border-radius: 15px; padding: 20px; text-align: center; 
-            scroll-snap-align: start; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 280px; background: #F5EEDD; border-radius: 12px; padding: 15px; text-align: center; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
-        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
-        .product-card h3 { color: #06202B; font-size: 22px; margin-bottom: 15px; }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
 
         /* Contacto */
-        .section-contact { padding: 40px 20px; align-items: center; justify-content: center; }
-        .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px; }
-        .social-item { text-decoration: none; color: #077A7D; display: flex; flex-direction: column; align-items: center; transition: 0.3s; }
-        .social-item:hover { transform: scale(1.1); }
-        .social-icon { width: 45px; height: 45px; margin-bottom: 8px; }
+        .section-contact { padding: 30px 20px; align-items: center; justify-content: center; }
+        .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; max-width: 900px; }
+        .social-item { text-decoration: none; color: #077A7D; display: flex; flex-direction: column; align-items: center; transition: transform 0.3s; }
+        .social-item:hover { transform: translateY(-5px); }
+        .social-icon { width: 45px; height: 45px; margin-bottom: 8px; object-fit: contain; }
+        .social-item span { font-weight: bold; text-transform: uppercase; font-size: 14px; }
 
-        footer { background: #06202B; color: #7AE2CF; padding: 15px; text-align: center; font-size: 14px; }
+        footer { background: #06202B; color: #7AE2CF; padding: 15px; text-align: center; font-size: 13px; }
 
         /* Modal */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; }
@@ -287,7 +288,7 @@
         <a href="#que-es-ritmo" onclick="toggleMenu()">¿QUÉ ES RITMO?</a>
         <a href="#entrenamientos" onclick="toggleMenu()">ENTRENAMIENTOS</a>
         <a href="#tienda" onclick="toggleMenu()">TIENDA</a>
-        <a href="#contacto" onclick="toggleMenu()">SÍGUEME</a>
+        <a href="#contacto" onclick="toggleMenu()">CONTACTO</a>
     </div>
 
     <!-- HERO -->
@@ -301,9 +302,14 @@
             <a href="#tienda">TIENDA</a>
             <a href="#contacto">CONTACTO</a>
         </nav>
-        <div class="container-featured"><img src="IMG/ritmo.png" alt="Ritmo" class="img-featured"></div>
+        
+        <!-- Logo Ritmo: reducido y bajado 50px -->
+        <div class="container-featured">
+            <img src="IMG/ritmo.png" alt="Logo Ritmo Pequeño" class="img-featured">
+        </div>
+
         <div class="header-text-box">
-            Ayudo a personas que aman correr a entrenar de forma constante y sin culpa, adaptando el running a su ritmo de vida para que disfruten el proceso y vean resultados reales.
+            Ayudo a personas que aman correr a entrenar de forma constante y sin culpa.
         </div>
         <button class="btn-cta" onclick="openModal()">EMPIEZA HOY</button>
     </header>
@@ -312,21 +318,19 @@
     <section class="section-info" id="quien-soy">
         <h2 class="section-title">¡HOLA! SOY YEYA</h2>
         <div class="bio-text">
-            <p><strong>Hola!!! Gracias por estar aquí.</strong></p>
-            <p>Soy Yeya, corro hace más de 10 años. Comencé con curiosidad y nervios, luego descubrí que correr era mi oportunidad de crecer y aprender no solo del deporte.</p>
-            <p style="margin-top: 10px;">Soy Lic. en Artes Escénicas, conductora y Running Coach certificada en ISSA. Tengo un podcast con 200 episodios que puedes escuchar en Spotify y Apple Podcast y desde 2025 soy head coach de <strong>Ritmo</strong>.</p>
-            <p style="margin-top: 10px;">Mi meta es ayudarte a ti que disfrutas correr, a que tus entrenamientos estén alineados con tu ritmo de vida. <strong>¡BIENVENIDOS!</strong></p>
+            <p>Coach certificada en ISSA y Lic. en Artes Escénicas. Mi meta es que tus entrenamientos estén alineados con tu ritmo de vida.</p>
         </div>
-        <div class="section-image-container"><img src="IMG/F2.JPEG" class="section-image" alt="Yeya Coach"></div>
+        <div class="section-image-container">
+            <img src="IMG/f2.jpeg" class="section-image" alt="Yeya Corriendo - Foco en Rostro">
+        </div>
     </section>
 
     <!-- ¿QUÉ ES RITMO? -->
     <section class="section-two-cols" id="que-es-ritmo">
-        <div class="col-image"><img src="IMG/f3.png" alt="Equipo Ritmo"></div>
+        <div class="col-image"><img src="IMG/f3.png" alt="Ritmo - Rostro centrado"></div>
         <div class="col-text">
             <h2>¿QUÉ ES RITMO?</h2>
-            <p>Ritmo es un equipo con entrenamientos personalizados que buscan ayudarte a reconocer tu ritmo de vida y entrenar de manera equilibrada, sana y responsable con tus metas.</p>
-            <p>Sabemos que entrenar se siente como hacer malabares. Ritmo te ayuda a entrenar sin presión, sin juicios y entendiendo tu ritmo de vida único y personal.</p>
+            <p>Es un equipo con entrenamientos personalizados que buscan ayudarte a reconocer tu ritmo de vida y entrenar de manera equilibrada.</p>
             <a href="https://wa.me/524421472440" class="btn-whatsapp">SÚMATE (R)</a>
         </div>
     </section>
@@ -335,17 +339,16 @@
     <section class="section-grid" id="entrenamientos">
         <h2 class="section-title">ENTRENAMIENTOS</h2>
         <ul class="list-includes">
-            <li>✓ Vía App VO2</li>
-            <li>✓ Fuerza (2x semana)</li>
-            <li>✓ WhatsApp Directo</li>
-            <li>✓ Videollamadas</li>
-            <li>✓ Comunidad Privada</li>
+            <li>✓ App VO2</li>
+            <li>✓ Fuerza</li>
+            <li>✓ WhatsApp</li>
+            <li>✓ Comunidad</li>
         </ul>
         <div class="grid-container">
-            <div class="grid-item"><img src="IMG/f4.jpg" alt="[Sesión de running técnica]"></div>
-            <div class="grid-item"><img src="IMG/f5.jpg" alt="[Entrenamiento de fuerza]"></div>
-            <div class="grid-item"><img src="IMG/f6.jpg" alt="[Comunidad Ritmo corriendo]"></div>
-            <div class="grid-item"><img src="IMG/f7.jpg" alt="[Yeya corrigiendo postura]"></div>
+            <div class="grid-item"><img src="IMG/f4.jpg" alt="Running"></div>
+            <div class="grid-item"><img src="IMG/f5.jpg" alt="Fuerza"></div>
+            <div class="grid-item"><img src="IMG/f6.jpg" alt="Equipo"></div>
+            <div class="grid-item"><img src="IMG/f7.jpg" alt="Yeya"></div>
         </div>
     </section>
 
@@ -354,19 +357,14 @@
         <h2 class="shop-title">TIENDA RITMO</h2>
         <div class="slider-container">
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400" alt="[Gorras deportivas Ritmo]">
+                <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400" alt="Gorras">
                 <h3>GORRAS</h3>
-                <a href="https://wa.me/524421472440?text=Info%20Gorras" class="btn-cta" style="font-size:16px; padding:10px;">INFO</a>
+                <a href="https://wa.me/524421472440?text=Info%20Gorras" class="btn-cta" style="font-size:14px; padding:8px 15px;">INFO</a>
             </div>
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=400" alt="[Termos hidratación Ritmo]">
+                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=400" alt="Termos">
                 <h3>TERMOS</h3>
-                <a href="https://wa.me/524421472440?text=Info%20Termos" class="btn-cta" style="font-size:16px; padding:10px;">INFO</a>
-            </div>
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400" alt="[Buffs para correr Ritmo]">
-                <h3>BUFFS</h3>
-                <a href="https://wa.me/524421472440?text=Info%20Buffs" class="btn-cta" style="font-size:16px; padding:10px;">INFO</a>
+                <a href="https://wa.me/524421472440?text=Info%20Termos" class="btn-cta" style="font-size:14px; padding:8px 15px;">INFO</a>
             </div>
         </div>
     </section>
@@ -379,28 +377,28 @@
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="social-icon" alt="Instagram">
                 <span>Instagram</span>
             </a>
-            <a href="https://tiktok.com/@yeyacorree" class="social-item" target="_blank">
+            <a href="https://www.tiktok.com/@yeyacorree" class="social-item" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="social-icon" alt="TikTok">
                 <span>TikTok</span>
             </a>
-            <a href="https://facebook.com/yeyacorree" class="social-item" target="_blank">
+            <a href="https://www.facebook.com/yeyacorree" class="social-item" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" class="social-icon" alt="Facebook">
                 <span>Facebook</span>
-            </a>
-            <a href="https://wa.me/524421472440" class="social-item" target="_blank">
-                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="social-icon" alt="WhatsApp">
-                <span>WhatsApp</span>
             </a>
             <a href="https://open.spotify.com/show/your_podcast_id" class="social-item" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" class="social-icon" alt="Spotify">
                 <span>Spotify</span>
+            </a>
+            <a href="https://wa.me/524421472440" class="social-item" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="social-icon" alt="WhatsApp">
+                <span>WhatsApp</span>
             </a>
         </div>
     </section>
 
     <footer>&copy; 2025 RITMO by Yeya Corre</footer>
 
-    <!-- MODAL -->
+    <!-- MODAL FORMULARIO -->
     <div id="formModal" class="modal-overlay">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal()">&times;</span>
@@ -413,7 +411,6 @@
         const mobileNav = document.getElementById('mobileNav');
         
         function toggleMenu() {
-            menuToggle.classList.toggle('open');
             mobileNav.classList.toggle('active');
         }
         menuToggle.addEventListener('click', toggleMenu);
