@@ -45,6 +45,13 @@
             html {
                 scroll-snap-type: none;
             }
+            
+            .section-info {
+                padding-bottom: 30px !important;
+            }
+            .section-two-cols {
+                padding-top: 0 !important;
+            }
         }
 
         /* Header / Hero */
@@ -52,7 +59,7 @@
             background-image: url('IMG/f1.jpeg');
             background-size: cover; 
             background-repeat: no-repeat;
-            background-position: center 15%; /* Prioriza la parte superior para ver el rostro */
+            background-position: center 15%; 
             justify-content: flex-start; 
             align-items: center;    
         }
@@ -92,20 +99,18 @@
 
         nav a:hover { color: #F5EEDD; }
 
-        /* Contenedor del Logo Ritmo Ajustado */
         .container-featured {
             flex: 1;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Alineado arriba para controlar el margen */
+            align-items: flex-start; 
             width: 100%;
-            padding-top: 50px; /* Bajado 50px según lo solicitado */
+            padding-top: 50px; 
         }
 
         .img-featured {
-            /* Reducción de tamaño: antes ~45%, ahora más controlado */
-            max-width: 250px; 
-            width: 30%;
+            max-width: 200px;
+            width: 25%;
             height: auto;
             object-fit: contain;
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
@@ -177,17 +182,28 @@
         /* Secciones de Contenido */
         .section-title { font-size: clamp(28px, 4.5vw, 42px); color: #077A7D; text-transform: uppercase; margin-bottom: 12px; padding-top: 15px; text-align: center; }
 
-        /* ¿Quién Soy? - Enfoque en Rostro */
-        .section-info { padding: 30px 20px; align-items: center; text-align: center; }
-        .bio-text { max-width: 800px; font-size: clamp(17px, 1.9vw, 20px); margin-bottom: 15px; }
-        .section-image-container { width: 100%; flex: 1; display: flex; justify-content: center; overflow: hidden; }
-        .section-image { 
-            height: 100%; 
+        /* ¿Quién Soy? - Contenedor 90% ancho centrado */
+        .section-info { padding: 30px 0; align-items: center; text-align: center; justify-content: center; }
+        .bio-text { max-width: 800px; font-size: clamp(17px, 1.9vw, 20px); margin: 0 auto 25px auto; padding: 0 20px; }
+        
+        /* Contenedor centrado al 90% */
+        .section-image-container { 
             width: 90%; 
-            max-width: 900px; 
-            object-fit: cover; 
-            object-position: center 10%; /* Ajustado para ver la cara arriba */
-            border-radius: 15px; 
+            max-width: 1100px; 
+            margin: 0 auto;
+            flex: 0 1 auto; /* Permite que el contenedor se ajuste al contenido o crezca hasta cierto punto */
+            display: flex; 
+            justify-content: center; 
+            overflow: hidden; 
+            border-radius: 15px; /* Opcional: bordes redondeados para que se vea más moderno */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .section-image { 
+            width: 100%; 
+            height: auto; /* Se adapta proporcionalmente al ancho */
+            display: block;
+            object-fit: contain; 
         }
 
         /* ¿Qué es Ritmo? */
@@ -201,8 +217,8 @@
 
         @media (max-width: 768px) {
             .section-two-cols { flex-direction: column; }
-            .col-image { height: 40vh; width: 100%; }
-            .col-text { padding: 25px 20px; align-items: center; text-align: center; }
+            .col-image { height: 60vh; width: 100%; }
+            .col-text { padding: 40px 25px; align-items: center; text-align: center; min-height: 40vh; }
         }
 
         .btn-whatsapp {
@@ -219,9 +235,48 @@
             gap: 8px;
         }
 
+        /* Botón WhatsApp Ritmo Circular */
+        .btn-ritmo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .btn-ritmo-wa-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background-image: url('IMG/R.png');
+            background-size: 65%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #7AE2CF;
+            border: 3px solid #077A7D;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            text-decoration: none;
+        }
+
+        .btn-ritmo-wa-circle:hover {
+            transform: scale(1.1);
+            background-color: #F5EEDD;
+        }
+
+        .ritmo-wa-text {
+            color: #077A7D;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
         /* Entrenamientos Grid */
         .section-grid { padding: 30px 20px; background-color: #F5EEDD; align-items: center; }
-        .list-includes { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 20px; }
+        .list-includes { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 25px; }
         .list-includes li { font-size: 16px; background: rgba(7, 122, 125, 0.1); padding: 5px 12px; border-radius: 20px; border: 1px solid #077A7D; }
         
         .grid-container { 
@@ -243,33 +298,60 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            object-position: center 15%; /* Foco en cara en el grid */
+            object-position: center 15%; 
         }
 
-        @media (max-width: 1024px) {
-            .grid-container { grid-template-columns: repeat(2, 1fr); }
+        @media (max-width: 768px) {
+            .grid-container { grid-template-columns: 1fr; gap: 20px; }
+            .grid-item { aspect-ratio: 9 / 12; max-width: 450px; margin: 0 auto; }
         }
 
-        /* Tienda */
-        .section-shop { background-color: #06202B; padding: 30px 20px; align-items: center; }
-        .shop-title { color: #7AE2CF; font-size: 40px; margin-bottom: 25px; }
-        .slider-container { display: flex; gap: 20px; width: 100%; max-width: 1000px; flex-wrap: wrap; justify-content: center; }
+        /* Tienda - Con mayor separación */
+        .section-shop { 
+            background-color: #06202B; 
+            padding: 100px 20px 60px 20px; 
+            align-items: center; 
+            height: auto; 
+            min-height: 100vh; 
+        }
+        .shop-title { color: #7AE2CF; font-size: 40px; margin-bottom: 40px; }
+        .slider-container { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 25px; 
+            width: 100%; 
+            max-width: 1100px; 
+        }
         
         .product-card { 
-            width: 280px; background: #F5EEDD; border-radius: 12px; padding: 15px; text-align: center; 
+            background: #F5EEDD; border-radius: 12px; padding: 20px; text-align: center; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; }
+        .product-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+        .product-card h3 { color: #06202B; margin-bottom: 15px; font-size: 24px; }
+
+        @media (max-width: 900px) {
+            .slider-container { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .slider-container { grid-template-columns: 1fr; }
+            .product-card { max-width: 320px; margin: 0 auto; }
+            .section-shop { padding-top: 80px; }
+        }
 
         /* Contacto */
-        .section-contact { padding: 30px 20px; align-items: center; justify-content: center; }
+        .section-contact { padding: 40px 20px; align-items: center; justify-content: center; }
         .social-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; max-width: 900px; }
         .social-item { text-decoration: none; color: #077A7D; display: flex; flex-direction: column; align-items: center; transition: transform 0.3s; }
         .social-item:hover { transform: translateY(-5px); }
         .social-icon { width: 45px; height: 45px; margin-bottom: 8px; object-fit: contain; }
         .social-item span { font-weight: bold; text-transform: uppercase; font-size: 14px; }
 
-        footer { background: #06202B; color: #7AE2CF; padding: 15px; text-align: center; font-size: 13px; }
+        footer { background: #06202B; color: #7AE2CF; padding: 20px; text-align: center; font-size: 13px; }
 
         /* Modal */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; justify-content: center; align-items: center; }
@@ -303,7 +385,6 @@
             <a href="#contacto">CONTACTO</a>
         </nav>
         
-        <!-- Logo Ritmo: reducido y bajado 50px -->
         <div class="container-featured">
             <img src="IMG/ritmo.png" alt="Logo Ritmo Pequeño" class="img-featured">
         </div>
@@ -314,23 +395,29 @@
         <button class="btn-cta" onclick="openModal()">EMPIEZA HOY</button>
     </header>
 
-    <!-- ¿QUIÉN SOY? -->
+    <!-- ¿QUIÉN SOY? - Imagen centrada al 90% del ancho -->
     <section class="section-info" id="quien-soy">
-        <h2 class="section-title">¡HOLA! SOY YEYA</h2>
+        <h2 class="section-title">Hola!!! Gracias por estar aquí .</h2>
         <div class="bio-text">
-            <p>Coach certificada en ISSA y Lic. en Artes Escénicas. Mi meta es que tus entrenamientos estén alineados con tu ritmo de vida.</p>
+            <p>Soy Yeya, corro hace más de 10 años ,comencé con curiosidad y nervios, luego descubrí que correr era mi oportunidad de crecer y aprender no solo del deporte.</p>
+            <p>Soy Lic. en Artes Escénicas, conductora y Running Coach certificada en ISSA.</p>
+            <p>Tengo un podcast con 200 episodios que puedes escuchar en Spotify y Apple podcast y desde 2025 soy head coach de Ritmo, un equipo de entrenamiento presencial en CDMX y con entrenamientos en línea en cualquier parte del mundo.</p>
+            <p>Mi meta es ayudarte a ti que disfrutas correr, a que tus entrenamientos estén alineados con tu ritmo de vida .</p>
+            <p>BIENVENIDOS!!</p>
         </div>
         <div class="section-image-container">
-            <img src="IMG/f2.jpg" class="section-image" alt="Yeya Corriendo - Foco en Rostro">
+            <img src="IMG/F2.JPEG" class="section-image" alt="Yeya Corriendo">
         </div>
     </section>
 
     <!-- ¿QUÉ ES RITMO? -->
     <section class="section-two-cols" id="que-es-ritmo">
-        <div class="col-image"><img src="IMG/f3.png" alt="Ritmo - Rostro centrado"></div>
+        <div class="col-image"><img src="IMG/f3.png" alt="Ritmo - Yeya vertical"></div>
         <div class="col-text">
             <h2>¿QUÉ ES RITMO?</h2>
-            <p>Es un equipo con entrenamientos personalizados que buscan ayudarte a reconocer tu ritmo de vida y entrenar de manera equilibrada.</p>
+            <p>Creo firmemente que todo en la vida tiene un ritmo para suceder;  entender, aceptar y reconocer ese ritmo nos permite aprender y progresar.</p>
+            <p>Ritmo es un equipo con entrenamientos personalizados que buscan ayudarte a reconocer tu ritmo de vida y entrenar de manera equilibrada, sana y responsable con tus metas</p>
+            <p>Sabemos que muchas veces entrenar se siente como hacer malabares entre vida personal, profesional y entrenar , Ritmo te ayuda a entrenar sin presión, sin juicios y entendiendo tu ritmo de vida único y personal. </p>
             <a href="https://wa.me/524421472440" class="btn-whatsapp">SÚMATE (R)</a>
         </div>
     </section>
@@ -338,12 +425,21 @@
     <!-- ENTRENAMIENTOS -->
     <section class="section-grid" id="entrenamientos">
         <h2 class="section-title">ENTRENAMIENTOS</h2>
+        <p style="font-size: 30px;">¿Qué incluye?</p>
         <ul class="list-includes">
-            <li>✓ App VO2</li>
-            <li>✓ Fuerza</li>
-            <li>✓ WhatsApp</li>
-            <li>✓ Comunidad</li>
+            <li>✓ Entrenamiento semanal basado en tus objetivos a través de la app VO2.</li>
+            <li>✓ 2 clases de fuerza a la semana con canal de ejercicios</li>
+            <li>✓ Seguimiento y comunicación via whatsapp</li>
+            <li>✓ Videollamadas de seguimiento</li>
+            <li>✓ Comunidad privada con rutinas, y consejos generales sobre entrenamiento.</li>
         </ul>
+
+        <!-- Botón WhatsApp Circular -->
+        <div class="btn-ritmo-container">
+            <a href="https://wa.me/524421472440?text=Hola!%20Me%20interesa%20empezar%20mi%20entrenamiento%20con%20Ritmo" class="btn-ritmo-wa-circle" target="_blank"></a>
+            <p class="ritmo-wa-text">Súmate vía WhatsApp</p>
+        </div>
+       
         <div class="grid-container">
             <div class="grid-item"><img src="IMG/f4.jpg" alt="Running"></div>
             <div class="grid-item"><img src="IMG/f5.jpg" alt="Fuerza"></div>
@@ -357,14 +453,20 @@
         <h2 class="shop-title">TIENDA RITMO</h2>
         <div class="slider-container">
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400" alt="Gorras">
+                <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500" alt="Gorras Ritmo">
                 <h3>GORRAS</h3>
-                <a href="https://wa.me/524421472440?text=Info%20Gorras" class="btn-cta" style="font-size:14px; padding:8px 15px;">INFO</a>
+                <a href="https://wa.me/524421472440?text=Hola!%20Me%20interesan%20las%20gorras%20Ritmo" class="btn-cta" style="font-size:16px; padding:10px 20px; margin-bottom:0;">MÁS INFO</a>
             </div>
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=400" alt="Termos">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS__prHuBDCHdaWl0eNc-Rkc8XPzFeTKIw4Pg&s" alt="Termo Ritmo">
                 <h3>TERMOS</h3>
-                <a href="https://wa.me/524421472440?text=Info%20Termos" class="btn-cta" style="font-size:14px; padding:8px 15px;">INFO</a>
+                <a href="https://wa.me/524421472440?text=Hola!%20Me%20interesan%20los%20termos%20Ritmo" class="btn-cta" style="font-size:16px; padding:10px 20px; margin-bottom:0;">MÁS INFO</a>
+            </div>
+            <div class="product-card">
+                <!-- Imagen actualizada para los Buffs -->
+                <img src="https://cdn.womensrunning.com/wp-content/uploads/2015/10/Screen-Shot-2015-10-02-at-11.20.36-AM.png" alt="Buffs Ritmo">
+                <h3>BUFFS</h3>
+                <a href="https://wa.me/524421472440?text=Hola!%20Me%20interesan%20los%20buffs%20Ritmo" class="btn-cta" style="font-size:16px; padding:10px 20px; margin-bottom:0;">MÁS INFO</a>
             </div>
         </div>
     </section>
